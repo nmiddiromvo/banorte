@@ -1,6 +1,7 @@
 package com.banorte.account.transactions.repository.entity;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 import java.math.BigDecimal;
@@ -11,7 +12,9 @@ public class TransactionEntity {
 
   @Id()
   private Long id;
+  private String description;
   private BigDecimal amount;
+  @Column("dateTime")
   private LocalDateTime dateTime;
   private String type;
   private Boolean favorite;
@@ -22,6 +25,14 @@ public class TransactionEntity {
 
   public void setId(Long id) {
     this.id = id;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
   }
 
   public BigDecimal getAmount() {
