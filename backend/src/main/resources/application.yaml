@@ -15,3 +15,5 @@ spring:
       mode: always
       platform: h2
       schema-locations: classpath:schema.sql
+
+logging.level.root: DEBUG

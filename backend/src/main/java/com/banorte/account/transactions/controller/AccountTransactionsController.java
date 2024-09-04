@@ -4,6 +4,7 @@ import com.banorte.account.transactions.repository.entity.TransactionEntity;
 import com.banorte.account.transactions.service.TransactionsService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -29,7 +30,7 @@ public class AccountTransactionsController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public Flux<TransactionEntity> getAll(@RequestParam(value = "type", required = false) String type) {
+    public Flux<TransactionEntity> getAll(@Validated @RequestParam(value = "type", required = false) TransactionEntity.TransactionType type) {
         return this.transactionsService.getAll(type);
     }
 

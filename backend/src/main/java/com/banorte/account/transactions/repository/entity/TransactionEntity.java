@@ -16,7 +16,8 @@ public class TransactionEntity {
   private BigDecimal amount;
   @Column("dateTime")
   private LocalDateTime dateTime;
-  private String type;
+  @Column("type")
+  private TransactionType type;
   private Boolean favorite;
 
   public Long getId() {
@@ -51,11 +52,11 @@ public class TransactionEntity {
     this.dateTime = dateTime;
   }
 
-  public String getType() {
+  public TransactionType getType() {
     return type;
   }
 
-  public void setType(String type) {
+  public void setType(TransactionType type) {
     this.type = type;
   }
 
@@ -66,4 +67,6 @@ public class TransactionEntity {
   public void setFavorite(Boolean favorite) {
     this.favorite = favorite;
   }
+
+  public enum TransactionType { WITHDRAW, INCOME }
 }

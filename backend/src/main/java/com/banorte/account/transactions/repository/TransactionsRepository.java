@@ -6,5 +6,5 @@ import reactor.core.publisher.Flux;
 
 public interface TransactionsRepository extends ReactiveCrudRepository<TransactionEntity, Long> {
 
-  Flux<TransactionEntity> findByType(String t);
+  Flux<TransactionEntity> findByType(TransactionEntity.TransactionType type);
 }

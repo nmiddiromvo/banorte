@@ -6,8 +6,6 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.util.Optional;
-
 @Service
 public class TransactionsService {
 
@@ -19,9 +17,12 @@ public class TransactionsService {
     this.transactionsRepository = transactionsRepository;
   }
 
-  public Flux<TransactionEntity> getAll(String type) {
+  public Flux<TransactionEntity> getAll(TransactionEntity.TransactionType type) {
     return switch (type) {
-      case String t when "WITHDRAW".equals(t) || "INCOME".equals(t) -> this.transactionsRepository.findByType(t);
+      case TransactionEntity.TransactionType t
+          when TransactionEntity.TransactionType.WITHDRAW.equals(t) || TransactionEntity.TransactionType.INCOME.equals(t)
+                -> this.transactionsRepository.findByType(t);
+      case null -> this.transactionsRepository.findAll();
       default -> this.transactionsRepository.findAll();
     };
   }
