@@ -1,3 +1,6 @@
+import 'dart:io';
+import 'dart:math';
+import 'dart:developer' as dev;
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -86,9 +89,9 @@ class _MovementsScreenState extends State<MovementsScreen> {
   }
 
   Future<void> deleteMovement(int id) async {
-    final response = await http.delete(Uri.parse('https://api.example.com/movements/$id'));
+    final response = await http.delete(Uri.parse('http://localhost:8080/api/transactions/$id'));
 
-    if (response.statusCode == 200) {
+    if (response.statusCode == 204) {
       setState(() {
         movements.removeWhere((movement) => movement.id == id);
       });
@@ -100,9 +103,9 @@ class _MovementsScreenState extends State<MovementsScreen> {
   }
 
   Future<void> toggleFavorite(int id) async {
-    final response = await http.patch(Uri.parse('https://api.example.com/movements/$id/favorite'));
+    final response = await http.patch(Uri.parse('http://localhost:8080/api/transactions/$id/favorite'));
 
-    if (response.statusCode == 200) {
+    if (response.statusCode == 204) {
       setState(() {
         Movement movement = movements.firstWhere((movement) => movement.id == id);
         movement.favorite = !movement.favorite;

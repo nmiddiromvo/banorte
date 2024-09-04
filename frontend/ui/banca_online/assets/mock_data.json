@@ -5,7 +5,7 @@
         "amount": 3500.0,
         "dateTime": "2024-08-22T09:15:30",
         "type": "INCOME",
-        "favorite": false
+        "favorite": true
     },
     {
         "id": 2,
