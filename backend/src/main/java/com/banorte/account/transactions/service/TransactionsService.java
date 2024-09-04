@@ -20,15 +20,10 @@ public class TransactionsService {
   }
 
   public Flux<TransactionEntity> getAll(String type) {
-    /* TODO
     return switch (type) {
-
-      null -> this.transactionsRepository.findAll();
+      case String t when "WITHDRAW".equals(t) || "INCOME".equals(t) -> this.transactionsRepository.findByType(t);
       default -> this.transactionsRepository.findAll();
     };
-     */
-
-    return this.transactionsRepository.findAll();
   }
 
   public Mono<Void> toggleFavorite(final Long transactionId) {
