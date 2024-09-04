@@ -1,0 +1,162 @@
+[
+    {
+        "id": 1,
+        "description": "Salary Payment",
+        "amount": 3500.0,
+        "dateTime": "2024-08-22T09:15:30",
+        "type": "INCOME",
+        "favorite": true
+    },
+    {
+        "id": 2,
+        "description": "Grocery Shopping",
+        "amount": -150.75,
+        "dateTime": "2024-08-23T17:30:45",
+        "type": "WITHDRAW",
+        "favorite": false
+    },
+    {
+        "id": 3,
+        "description": "Electricity Bill",
+        "amount": -120.5,
+        "dateTime": "2024-08-24T10:10:20",
+        "type": "WITHDRAW",
+        "favorite": false
+    },
+    {
+        "id": 4,
+        "description": "Freelance Work",
+        "amount": 800.0,
+        "dateTime": "2024-08-25T14:45:10",
+        "type": "INCOME",
+        "favorite": false
+    },
+    {
+        "id": 5,
+        "description": "Restaurant Dinner",
+        "amount": -60.0,
+        "dateTime": "2024-08-26T19:20:00",
+        "type": "WITHDRAW",
+        "favorite": false
+    },
+    {
+        "id": 6,
+        "description": "Gym Membership",
+        "amount": -45.0,
+        "dateTime": "2024-08-27T07:30:00",
+        "type": "WITHDRAW",
+        "favorite": false
+    },
+    {
+        "id": 7,
+        "description": "Movie Tickets",
+        "amount": -30.0,
+        "dateTime": "2024-08-28T21:45:15",
+        "type": "WITHDRAW",
+        "favorite": false
+    },
+    {
+        "id": 8,
+        "description": "Dividend Income",
+        "amount": 250.0,
+        "dateTime": "2024-08-29T13:00:00",
+        "type": "INCOME",
+        "favorite": false
+    },
+    {
+        "id": 9,
+        "description": "Book Purchase",
+        "amount": -20.0,
+        "dateTime": "2024-08-30T11:10:30",
+        "type": "WITHDRAW",
+        "favorite": false
+    },
+    {
+        "id": 10,
+        "description": "Online Course Fee",
+        "amount": -200.0,
+        "dateTime": "2024-08-31T16:05:20",
+        "type": "WITHDRAW",
+        "favorite": false
+    },
+    {
+        "id": 11,
+        "description": "Gift Received",
+        "amount": 500.0,
+        "dateTime": "2024-09-01T12:00:00",
+        "type": "INCOME",
+        "favorite": false
+    },
+    {
+        "id": 12,
+        "description": "Car Repair",
+        "amount": -300.0,
+        "dateTime": "2024-09-02T08:15:00",
+        "type": "WITHDRAW",
+        "favorite": false
+    },
+    {
+        "id": 13,
+        "description": "Lottery Win",
+        "amount": 1000.0,
+        "dateTime": "2024-09-03T18:30:45",
+        "type": "INCOME",
+        "favorite": false
+    },
+    {
+        "id": 14,
+        "description": "Coffee Shop",
+        "amount": -10.5,
+        "dateTime": "2024-09-04T08:30:00",
+        "type": "WITHDRAW",
+        "favorite": false
+    },
+    {
+        "id": 15,
+        "description": "Charity Donation",
+        "amount": -100.0,
+        "dateTime": "2024-08-22T20:45:00",
+        "type": "WITHDRAW",
+        "favorite": false
+    },
+    {
+        "id": 16,
+        "description": "Concert Tickets",
+        "amount": -75.0,
+        "dateTime": "2024-08-23T19:15:00",
+        "type": "WITHDRAW",
+        "favorite": false
+    },
+    {
+        "id": 17,
+        "description": "Cash Deposit",
+        "amount": 400.0,
+        "dateTime": "2024-08-24T15:50:00",
+        "type": "INCOME",
+        "favorite": false
+    },
+    {
+        "id": 18,
+        "description": "New Laptop",
+        "amount": -1200.0,
+        "dateTime": "2024-08-25T13:20:00",
+        "type": "WITHDRAW",
+        "favorite": false
+    },
+    {
+        "id": 19,
+        "description": "Grocery Shopping",
+        "amount": -200.5,
+        "dateTime": "2024-08-26T17:30:00",
+        "type": "WITHDRAW",
+        "favorite": false
+    },
+    {
+        "id": 20,
+        "description": "Stock Sale",
+        "amount": 1500.0,
+        "dateTime": "2024-08-27T14:10:00",
+        "type": "INCOME",
+        "favorite": false
+    }
+]
