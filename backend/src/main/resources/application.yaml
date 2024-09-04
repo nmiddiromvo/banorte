@@ -1,1 +1,4 @@
-spring.application.name: account-transactions
+spring:
+  application.name: account-transactions
+  r2dbc:
+    url: r2dbc:h2:mem:///account_transactions_db
