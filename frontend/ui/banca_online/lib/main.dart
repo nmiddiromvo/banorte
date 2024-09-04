@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:flutter/services.dart' as rootBundle;
 
 void main() {
   runApp(BankApp());
@@ -21,7 +21,7 @@ class BankApp extends StatelessWidget {
 
 class Movement {
   final int id;
-  final String description;
+  final String description; // Nuevo campo añadido
   final double amount;
   final DateTime dateTime; // Cambiado de 'date' a 'dateTime'
   final String type;
@@ -29,7 +29,7 @@ class Movement {
 
   Movement({
     required this.id,
-    required this.description,
+    required this.description, // Nuevo campo
     required this.amount,
     required this.dateTime, // Cambiado de 'date' a 'dateTime'
     required this.type,
@@ -39,7 +39,7 @@ class Movement {
   factory Movement.fromJson(Map<String, dynamic> json) {
     return Movement(
       id: json['id'],
-      description: json['description'],
+      description: json['description'], // Nuevo campo desde el JSON
       amount: json['amount'],
       dateTime: DateTime.parse(json['dateTime']), // Cambiado de 'date' a 'dateTime'
       type: json['type'],
@@ -68,29 +68,49 @@ class _MovementsScreenState extends State<MovementsScreen> {
       isLoading = true;
     });
 
-    // Cargar datos desde el archivo JSON local
-    final String response = await rootBundle.rootBundle.loadString('assets/mock_data.json');
-    final List<dynamic> data = json.decode(response);
+    final response = await http.get(Uri.parse('http://localhost:8080/api/transactions'));
 
-    setState(() {
-      movements = data.map((json) => Movement.fromJson(json)).toList();
-      isLoading = false;
-    });
+    if (response.statusCode == 200) {
+      final List<dynamic> data = json.decode(response.body);
+      setState(() {
+        movements = data.map((json) => Movement.fromJson(json)).toList();
+        isLoading = false;
+      });
+    } else {
+      // Handle errors
+      setState(() {
+        isLoading = false;
+      });
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Failed to load movements')));
+    }
   }
 
   Future<void> deleteMovement(int id) async {
-    setState(() {
-      movements.removeWhere((movement) => movement.id == id);
-    });
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Movement deleted')));
+    final response = await http.delete(Uri.parse('https://api.example.com/movements/$id'));
+
+    if (response.statusCode == 200) {
+      setState(() {
+        movements.removeWhere((movement) => movement.id == id);
+      });
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Movement deleted')));
+    } else {
+      // Handle errors
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Failed to delete movement')));
+    }
   }
 
   Future<void> toggleFavorite(int id) async {
-    setState(() {
-      Movement movement = movements.firstWhere((movement) => movement.id == id);
-      movement.favorite = !movement.favorite;
-    });
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Favorite status updated')));
+    final response = await http.patch(Uri.parse('https://api.example.com/movements/$id/favorite'));
+
+    if (response.statusCode == 200) {
+      setState(() {
+        Movement movement = movements.firstWhere((movement) => movement.id == id);
+        movement.favorite = !movement.favorite;
+      });
+    } else {
+      // Handle errors
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Failed to update favorite status')));
+    }
   }
 
   @override
@@ -111,7 +131,7 @@ class _MovementsScreenState extends State<MovementsScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(movement.description), // Muestra la descripción
-                      Text('${movement.dateTime.toLocal()}'), // Mostrar la fecha y hora
+                      Text('${movement.dateTime.toLocal()}'), // Muestra la fecha y hora
                     ],
                   ),
                   trailing: Row(
