@@ -10,7 +10,7 @@ class BankApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Movimientos Bancarios',
+      title: 'Bank Movements',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -21,18 +21,27 @@ class BankApp extends StatelessWidget {
 
 class Movement {
   final int id;
+  final String description;
   final double amount;
-  final DateTime date;
+  final DateTime dateTime; // Cambiado de 'date' a 'dateTime'
   final String type;
   bool favorite;
 
-  Movement({required this.id, required this.amount, required this.date, required this.type, required this.favorite});
+  Movement({
+    required this.id,
+    required this.description,
+    required this.amount,
+    required this.dateTime, // Cambiado de 'date' a 'dateTime'
+    required this.type,
+    required this.favorite,
+  });
 
   factory Movement.fromJson(Map<String, dynamic> json) {
     return Movement(
       id: json['id'],
+      description: json['description'],
       amount: json['amount'],
-      date: DateTime.parse(json['date']),
+      dateTime: DateTime.parse(json['dateTime']), // Cambiado de 'date' a 'dateTime'
       type: json['type'],
       favorite: json['favorite'],
     );
@@ -88,7 +97,7 @@ class _MovementsScreenState extends State<MovementsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Movimientos'),
+        title: Text('Bank Movements'),
       ),
       body: isLoading
           ? Center(child: CircularProgressIndicator())
@@ -98,7 +107,13 @@ class _MovementsScreenState extends State<MovementsScreen> {
                 final movement = movements[index];
                 return ListTile(
                   title: Text('${movement.type} - \$${movement.amount.toStringAsFixed(2)}'),
-                  subtitle: Text('${movement.date.toLocal()}'),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(movement.description), // Muestra la descripción
+                      Text('${movement.dateTime.toLocal()}'), // Mostrar la fecha y hora
+                    ],
+                  ),
                   trailing: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
