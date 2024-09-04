@@ -1,0 +1,24 @@
+[
+    {
+      "id": 1,
+      "amount": 1500.00,
+      "date": "2024-08-01T12:34:56Z",
+      "type": "abono",
+      "favorite": false
+    },
+    {
+      "id": 2,
+      "amount": -300.00,
+      "date": "2024-08-02T14:20:00Z",
+      "type": "retiro",
+      "favorite": true
+    },
+    {
+      "id": 3,
+      "amount": 1200.00,
+      "date": "2024-08-03T09:15:30Z",
+      "type": "abono",
+      "favorite": false
+    }
+  ]
+  
